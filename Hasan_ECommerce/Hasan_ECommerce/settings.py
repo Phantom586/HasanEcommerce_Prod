@@ -76,25 +76,25 @@ WSGI_APPLICATION = 'Hasan_ECommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# 'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'rabshanh$hasan_20_21',
-#         'USER': 'rabshanh',
-#         'PASSWORD': 'DBP@ssHS@123',
-#         'HOST': 'rabshanh.mysql.pythonanywhere-services.com',
-#         'TIME_ZONE' : 'Asia/Calcutta',
-#         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-#         }
 
 DATABASES = {
-    'default': {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'hasan_20_21',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    #     'TIME_ZONE' : 'Asia/Calcutta',
+    #     'OPTIONS': {
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    #     },
+        'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hasan_20_21',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'rabshanh$hasan_20_21',
+        'USER': 'rabshanh',
+        'PASSWORD': 'DBP@ssHS@123',
+        'HOST': 'rabshanh.mysql.pythonanywhere-services.com',
         'TIME_ZONE' : 'Asia/Calcutta',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
