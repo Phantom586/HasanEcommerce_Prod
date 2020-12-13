@@ -76,3 +76,17 @@ class ProductImages(models.Model):
 
     def __str__(self):
         return f'{self.id} | {self.name}'
+
+
+class Temptable(models.Model):
+    user_id = models.BigIntegerField(db_column='User_ID', primary_key=True)  # Field name made lowercase.
+    product_id = models.IntegerField(db_column='Product_ID')  # Field name made lowercase.
+    qty = models.IntegerField(db_column='Qty')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'temptable'
+        unique_together = (('user_id', 'product_id'),)
+
+    def __str__(self):
+        return f'{self.user_id} | {self.product_id} | {self.qty}'

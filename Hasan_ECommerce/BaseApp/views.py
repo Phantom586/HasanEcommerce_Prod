@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Clothing, Categories, Color, Size, ProductImages
+from .models import Clothing, Categories, Color, Size, ProductImages, Temptable
 
 
 def get_nav_categories():
@@ -137,3 +137,15 @@ class ProductDesc(TemplateView):
 
         return context
         
+
+class AddToCart(TemplateView):
+
+    template_name = 'BaseApp/cart.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        p_id = self.kwargs['id']
+
+        return context
