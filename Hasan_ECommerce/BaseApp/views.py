@@ -153,12 +153,13 @@ def AddToCart(request, pg, id, mrp, gender, category):
     context['categories_woman'] = result[1]
 
     user_id = request.user.id
+    print(user_id, id)
 
     # Checking if the product doesn't already exists in the DB.
-    exists = BasketTable.objects.filter(user_id=user_id, cloth_id=id)
+    exists = BasketTable.objects.filter(user_id=user_id, cloth_id=id).count()
     print(exists)
 
-    if exists is not None:
+    if exists >= 0:
         print("Product Exists")
 
     # store_in_basket = BasketTable.objects.create(

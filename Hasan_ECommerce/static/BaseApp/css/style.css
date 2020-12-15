@@ -2280,20 +2280,7 @@ ul {
 }
 
 /* line 122, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
-.main_menu .cart i:after {
-  position: absolute;
-  border-radius: 50%;
-  background-color: #2f7dfc;
-  width: 14px;
-  height: 14px;
-  right: -8px;
-  top: -8px;
-  content: "5";
-  text-align: center;
-  line-height: 15px;
-  font-size: 10px;
-  color: #fff;
-}
+
 
 /* line 141, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
 .menu_fixed {
