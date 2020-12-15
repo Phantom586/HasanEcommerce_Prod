@@ -16,7 +16,7 @@ urlpatterns = [
     # path('products/<str:type>/', ProductsView.as_view(), name="product"),
     # path('products/<str:type>/<str:category>/', ProductsByCategory.as_view()),
     # path('products/<str:type>/<str:category>/<int:id>/', ProductDesc.as_view()),
-    path('cart/', Cart.as_view(), name="cart"),
+    path('cart/', login_required(Cart.as_view()), name="cart"),
     path('add_to_cart/<str:pg>/<int:id>/<str:mrp>/<str:gender>/<str:category>/', AddToCart, name="add_to_cart"),
     path('<str:type>/', ProductsView.as_view(), name="product"),
     path('<str:type>/<str:category>/', ProductsByCategory.as_view()),
