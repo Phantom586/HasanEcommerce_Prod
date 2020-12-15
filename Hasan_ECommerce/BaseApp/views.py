@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.db.models import F, Sum
 from django.contrib.auth.decorators import login_required
 from .models import (
     Clothing, Categories, Color, Size, 
@@ -153,22 +154,27 @@ def AddToCart(request, pg, id, mrp, gender, category):
     context['categories_woman'] = result[1]
 
     user_id = request.user.id
-    print(user_id, id)
+    
+    p_size = request.GET["p_size"]
+    p_color = request.GET["p_color"]
+    p_qty = request.GET["p_qty"]
 
     # Checking if the product doesn't already exists in the DB.
     exists = BasketTable.objects.filter(user_id=user_id, cloth_id=id).count()
-    print(exists)
 
-    if exists >= 0:
-        print("Product Exists")
-
-    # store_in_basket = BasketTable.objects.create(
-    #     user_id = user_id,
-    #     cloth_id = id,
-    #     quantity = 1,
-    #     mrp = mrp,
-    #     total_mrp = mrp * quantity
-    # )
+    if exists > 0:
+        update_prod = BasketTable.objects.filter(user_id=user_id, cloth_id=id).update(quantity=F('quantity')+1, total_mrp=F('mrp')*F('quantity'))
+    else :
+        t_mrp = int(p_qty) * int(mrp)
+        store_in_basket = BasketTable.objects.create(
+            user_id = user_id,
+            cloth_id = id,
+            quantity = p_qty,
+            mrp = mrp,
+            size = p_size,
+            color = p_color,
+            total_mrp = t_mrp
+        )
 
     redirect_link = ""
 
@@ -188,12 +194,43 @@ class Cart(TemplateView):
 
         context = super().get_context_data(**kwargs)
 
-        p_id = self.kwargs['id']
-
         result = get_nav_categories()
+
+        u_id = self.request.user.id
+
+        products_list = list(BasketTable.objects.filter(user_id=u_id).values())
+        total_amount = BasketTable.objects.filter(user_id=u_id).aggregate(Sum('total_mrp'))
+        total_amount = total_amount['total_mrp__sum']
+
+        for product in products_list:
+            cloth_id = product['cloth_id']
+            cloth = Clothing.objects.get(id=cloth_id)
+            product['name'] = cloth.product_name
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
+        context['total_amount'] = total_amount
+        context['products_list'] = products_list
 
         return context
+    
+
+def Update_Quantity(request, opr, cloth_id):
+
+    u_id = request.user.id
+
+    if opr == "8c3642":
+        update_prod = BasketTable.objects.filter(user_id=u_id, cloth_id=cloth_id).update(quantity=F('quantity')+1, total_mrp=F('mrp')*F('quantity'))
+    elif opr == "fc05f9":
+        # Checking if the qty. of the product is >= 0 or not.
+        cloth_details = BasketTable.objects.get(user_id=u_id, cloth_id=cloth_id)
+        p_qty = cloth_details.quantity
+
+        if p_qty > 1:
+            update_prod = BasketTable.objects.filter(user_id=u_id, cloth_id=cloth_id).update(quantity=F('quantity')-1, total_mrp=F('mrp')*F('quantity'))
+        else:
+            # Deleting the Record.
+            BasketTable.objects.filter(user_id=u_id, cloth_id=cloth_id).delete()
+
+    return redirect('/home/products/cart')
     

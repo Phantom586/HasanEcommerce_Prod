@@ -18,8 +18,9 @@ class Clothing(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     brand_name = models.CharField(db_column='Brand_Name', max_length=255)  # Field name made lowercase.
     product_name = models.CharField(db_column='Product_Name', max_length=256)  # Field name made lowercase.
+    product_desc = models.CharField(db_column='Product_Desc', max_length=255)  # Field name made lowercase.
     price = models.IntegerField(db_column='Price')  # Field name made lowercase.
-    gender = models.CharField(db_column='Gender', max_length=5)  # Field name made lowercase.
+    gender = models.CharField(db_column='Gender', max_length=15)  # Field name made lowercase.
     category = models.CharField(db_column='Category', max_length=50)  # Field name made lowercase.
     quantity = models.IntegerField(db_column='Quantity')  # Field name made lowercase.
 
@@ -94,6 +95,8 @@ class BasketTable(models.Model):
     quantity = models.IntegerField(db_column='Quantity')  # Field name made lowercase.
     timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
     mrp = models.FloatField(db_column='MRP')  # Field name made lowercase.
+    size = models.CharField(db_column='Size', max_length=5)  # Field name made lowercase.
+    color = models.CharField(db_column='Color', max_length=50)  # Field name made lowercase.
     total_mrp = models.FloatField(db_column='Total_MRP')  # Field name made lowercase.
 
     class Meta:
