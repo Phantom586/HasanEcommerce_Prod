@@ -63,3 +63,10 @@ def Login(request):
     context['categories_woman'] = result[1]
 
     return render(request, 'LoginApp/login.html', {'data':context})
+
+
+def Logout(request):
+
+    logout(request)
+
+    return redirect('login')
