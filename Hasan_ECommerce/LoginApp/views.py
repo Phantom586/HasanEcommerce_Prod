@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserRegisterForm
 from django.contrib import messages
-from BaseApp.models import Categories
+from BaseApp.models import Categories, UserTable
 
 # Create your views here.
 def get_nav_categories():
@@ -23,11 +23,18 @@ def Register(request):
         form = UserRegisterForm(request.POST)
 
         if form.is_valid():
+            
             form.save()
             
-            u_name = form.cleaned_data.get('username')
+            full_name = form.cleaned_data.get('full_name')
+            email = form.cleaned_data.get('email')
+            phone_no = form.cleaned_data.get('phone_no')
 
-            messages.success(request, f'Account Created for {u_name}!')
+            new_user = UserTable.objects.create(
+                name = full_name,
+                phone_no = phone_no,
+                email = email
+            )
 
             return redirect('login')
 

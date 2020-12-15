@@ -89,7 +89,7 @@ class InvoiceTable(models.Model):
 
 
 class BasketTable(models.Model):
-    user = models.CharField(db_column='User', primary_key=True, max_length=13)  # Field name made lowercase.
+    user_id = models.IntegerField(db_column='User_ID', primary_key=True)  # Field name made lowercase.
     cloth_id = models.IntegerField(db_column='Cloth_ID')  # Field name made lowercase.
     quantity = models.IntegerField(db_column='Quantity')  # Field name made lowercase.
     timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
@@ -99,6 +99,22 @@ class BasketTable(models.Model):
     class Meta:
         managed = False
         db_table = 'basket_table'
+        unique_together = (('user_id', 'cloth_id'),)
 
     def __str__(self):
         return f'{self.user} | {self.cloth_id} | {self.quantity}'
+
+
+class UserTable(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', max_length=100)  # Field name made lowercase.
+    phone_no = models.CharField(db_column='Phone_No', max_length=13)  # Field name made lowercase.
+    email = models.CharField(db_column='Email', max_length=60)  # Field name made lowercase.
+    signup_timestamp = models.DateTimeField(db_column='SignUp_Timestamp')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'user_table'
+
+    def __str__(self):
+        return f'{self.id} | {self.name}'

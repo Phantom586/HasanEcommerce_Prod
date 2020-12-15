@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from .models import Clothing, Categories, Color, Size, ProductImages
+from django.contrib.auth.decorators import login_required
+from .models import (
+    Clothing, Categories, Color, Size, 
+    ProductImages, InvoiceTable, BasketTable
+)
 
 
 def get_nav_categories():
@@ -138,22 +142,41 @@ class ProductDesc(TemplateView):
         return context
         
 
-class AddToCart(TemplateView):
+@login_required
+def AddToCart(request, pg, id, mrp, gender, category):
 
-    template_name = 'BaseApp/cart.html'
+    result = get_nav_categories()
 
-    def get_context_data(self, **kwargs):
+    context = {}
 
-        context = super().get_context_data(**kwargs)
+    context['categories_men'] = result[0]
+    context['categories_woman'] = result[1]
 
-        p_id = self.kwargs['id']
+    user_id = request.user.id
 
-        result = get_nav_categories()
+    # Checking if the product doesn't already exists in the DB.
+    exists = BasketTable.objects.filter(user_id=user_id, cloth_id=id)
+    print(exists)
 
-        context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
+    if exists is not None:
+        print("Product Exists")
 
-        return context
+    # store_in_basket = BasketTable.objects.create(
+    #     user_id = user_id,
+    #     cloth_id = id,
+    #     quantity = 1,
+    #     mrp = mrp,
+    #     total_mrp = mrp * quantity
+    # )
+
+    redirect_link = ""
+
+    if pg == "f5bf48":
+        redirect_link = f'/home/products/{gender}/{category}'
+    elif pg == "c0929b":
+        redirect_link = f'/home/products/{gender}/{category}/{id}'
+
+    return redirect( redirect_link)
 
 
 class Cart(TemplateView):
