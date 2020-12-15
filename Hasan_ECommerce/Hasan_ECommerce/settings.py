@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['rabshanh.pythonanywhere.com']
 INSTALLED_APPS = [
     'BaseApp.apps.BaseappConfig',
     'LoginApp.apps.LoginappConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -89,6 +90,7 @@ DATABASES = {
     #     'OPTIONS': {
     #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
     #     },
+    # },
         'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rabshanh$hasan_20_21',
@@ -148,6 +150,7 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'hasan-home'
 

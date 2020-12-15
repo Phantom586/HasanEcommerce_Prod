@@ -148,4 +148,28 @@ class AddToCart(TemplateView):
 
         p_id = self.kwargs['id']
 
+        result = get_nav_categories()
+
+        context['categories_men'] = result[0]
+        context['categories_woman'] = result[1]
+
         return context
+
+
+class Cart(TemplateView):
+
+    template_name = 'BaseApp/cart.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        p_id = self.kwargs['id']
+
+        result = get_nav_categories()
+
+        context['categories_men'] = result[0]
+        context['categories_woman'] = result[1]
+
+        return context
+    
