@@ -23,10 +23,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('', base_views.IndexView.as_view(), name="hasan-home"),
-    path('login/', auth_views.LoginView.as_view(template_name='LoginApp/login.html'), name="login"),
+    path('login/', login_views.Login, name="login"),
     path('home/products/', include('BaseApp.urls')),
     path('logout/', auth_views.LogoutView.as_view(template_name='LoginApp/logout.html'), name="logout"),
-    path('register/', login_views.register, name="register"),
+    path('register/', login_views.Register, name="register"),
     path('admin/', admin.site.urls),
 ]
 

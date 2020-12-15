@@ -3,10 +3,20 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import UserRegisterForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from BaseApp.models import Categories
 
 # Create your views here.
-def register(request):
+def get_nav_categories():
+
+    category_men = list(Categories.objects.filter(gender="men"))
+    category_woman = list(Categories.objects.filter(gender="woman"))
+
+    return [category_men, category_woman]
+
+
+def Register(request):
+    
+    context = {}
 
     if request.method == "POST":
 
@@ -25,5 +35,31 @@ def register(request):
 
         form = UserRegisterForm()
 
-    return render(request, 'LoginApp/register.html', {'form':form})
+        result = get_nav_categories()
 
+        context['categories_men'] = result[0]
+        context['categories_woman'] = result[1]
+
+    return render(request, 'LoginApp/register.html', {'form':form, 'data' :context})
+
+
+def Login(request):
+
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('hasan-home')
+
+    result = get_nav_categories()
+
+    context = {}
+
+    context['categories_men'] = result[0]
+    context['categories_woman'] = result[1]
+
+    return render(request, 'LoginApp/login.html', {'data':context})
