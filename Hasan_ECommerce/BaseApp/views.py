@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Clothing, Categories, Color, Size, ProductImages, Temptable
+from .models import Clothing, Categories, Color, Size, ProductImages
 
 
 def get_nav_categories():

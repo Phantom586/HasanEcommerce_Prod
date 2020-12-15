@@ -1,10 +1,3 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
 
@@ -78,15 +71,34 @@ class ProductImages(models.Model):
         return f'{self.id} | {self.name}'
 
 
-class Temptable(models.Model):
-    user_id = models.BigIntegerField(db_column='User_ID', primary_key=True)  # Field name made lowercase.
-    product_id = models.IntegerField(db_column='Product_ID')  # Field name made lowercase.
-    qty = models.IntegerField(db_column='Qty')  # Field name made lowercase.
+class InvoiceTable(models.Model):
+    receipt_no = models.BigAutoField(db_column='Receipt_No', primary_key=True)  # Field name made lowercase.
+    txn_id = models.CharField(db_column='Txn_ID', max_length=255)  # Field name made lowercase.
+    order_id = models.CharField(db_column='Order_ID', max_length=255)  # Field name made lowercase.
+    payment_mode = models.CharField(db_column='Payment_Mode', max_length=50)  # Field name made lowercase.
+    user = models.CharField(db_column='User', max_length=13)  # Field name made lowercase.
+    total_mrp = models.FloatField(db_column='Total_MRP')  # Field name made lowercase.
+    timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'temptable'
-        unique_together = (('user_id', 'product_id'),)
+        db_table = 'invoice_table'
 
     def __str__(self):
-        return f'{self.user_id} | {self.product_id} | {self.qty}'
+        return f'{self.receipt_no} | {self.user} | {self.timestamp}'
+
+
+class BasketTable(models.Model):
+    user = models.CharField(db_column='User', primary_key=True, max_length=13)  # Field name made lowercase.
+    cloth_id = models.IntegerField(db_column='Cloth_ID')  # Field name made lowercase.
+    quantity = models.IntegerField(db_column='Quantity')  # Field name made lowercase.
+    timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
+    mrp = models.FloatField(db_column='MRP')  # Field name made lowercase.
+    total_mrp = models.FloatField(db_column='Total_MRP')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'basket_table'
+
+    def __str__(self):
+        return f'{self.user} | {self.cloth_id} | {self.quantity}'
