@@ -26,7 +26,7 @@ urlpatterns = [
     path('home/', include('BaseApp.urls')),
     path('logout/', login_views.Logout, name="logout"),
     path('register/', login_views.Register, name="register"),
-    path('admin/', admin.site.urls),
+    path('admin7ddb46/', admin.site.urls),
 ]
 
 if settings.DEBUG:

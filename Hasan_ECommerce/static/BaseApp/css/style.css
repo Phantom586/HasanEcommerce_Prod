@@ -560,21 +560,21 @@ ul {
   display: inline-block;
   padding: 9px 42px;
   border-radius: 50px;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   border: 1px solid #f4f4f4;
   font-size: 15px;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
   font-weight: 400;
-  border: 1px solid #2f7dfc;
+  border: 1px solid #4599df;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 /* line 52, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_button.scss */
 .btn_3:hover {
-  background-color: red;
+  background-color: rgb(24, 201, 192);
   color: #fff;
 }
 
@@ -599,7 +599,7 @@ ul {
 /* line 72, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_button.scss */
 .btn_2:hover {
   color: #fff !important;
-  background-color: #2f7dfc;
+  background-color: #4599df;
 }
 
 @media (max-width: 991px) {
@@ -613,7 +613,7 @@ ul {
 
 /* line 87, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_button.scss */
 .btn_4 {
-  color: #2f7dfc;
+  color: #4599df;
   font-size: 15px;
   font-weight: 700;
   margin-top: 53px;
@@ -647,7 +647,7 @@ ul {
   color: #fff;
   border: 1px solid #edeff2;
   text-transform: uppercase;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -718,7 +718,7 @@ ul {
 
 /* line 14, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog.scss */
 .blog_area a:hover, .blog_area a :hover {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 20, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog.scss */
@@ -1223,7 +1223,7 @@ ul {
 
 /* line 540, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog.scss */
 .blog_details a:hover {
-  color: #2f7dfc !important;
+  color: #4599df !important;
 }
 
 /* line 545, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog.scss */
@@ -1291,7 +1291,7 @@ ul {
   left: 10px;
   display: block;
   color: #fff;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   padding: 8px 15px;
   border-radius: 5px;
 }
@@ -1514,7 +1514,7 @@ ul {
 
 /* line 835, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog.scss */
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-  background: #2f7dfc;
+  background: #4599df;
   color: #fff !important;
   -webkit-text-fill-color: #fff;
   text-decoration: none;
@@ -1762,7 +1762,7 @@ ul {
 
 /* line 1201, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog.scss */
 .single-post-area .blog-author a:hover {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 1206, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog.scss */
@@ -2107,7 +2107,7 @@ ul {
 
 /* line 18, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_single_blog.scss */
 .single_blog_post .single_blog .single_appartment_content p a {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 22, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_single_blog.scss */
@@ -2294,7 +2294,7 @@ ul {
 
 /* line 149, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
 .menu_fixed .active_color {
-  color: #2f7dfc !important;
+  color: #4599df !important;
 }
 
 /* line 155, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
@@ -2305,7 +2305,7 @@ ul {
   transform: scale(1, 0);
   display: block;
   border: 0px solid transparent;
-  background-color: #2f7dfc;
+  background-color: #4599df;
 }
 
 /* line 164, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
@@ -2313,7 +2313,7 @@ ul {
   font-size: 14px;
   padding: 8px 20px !important;
   color: #fff !important;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   text-transform: capitalize;
 }
 
@@ -2364,11 +2364,11 @@ ul {
   .dropdown:hover .dropdown-menu {
     transform: scale(1);
     display: block;
-    color: #2f7dfc;
+    color: #4599df;
   }
   /* line 230, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
   .dropdown .dropdown-item:hover {
-    color: #2f7dfc !important;
+    color: #4599df !important;
   }
   /* line 235, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
   .navbar-brand img {
@@ -2431,7 +2431,7 @@ ul {
 .banner_part {
   position: sticky;
   background-color: #f9fdff;
-  background-image: url("/media/img/latest.png");
+  background-image: url("../img/latest.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2439,7 +2439,7 @@ ul {
 .banner_part2 {
   position: sticky;
   background-color: #f9fdff;
-  background-image: url("/media/img/men.png");
+  background-image: url("../img/men.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2447,7 +2447,7 @@ ul {
 .banner_part3 {
   position: sticky;
   background-color: #f9fdff;
-  background-image: url("/media/img/women.jpeg");
+  background-image: url("../img/women.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2822,7 +2822,7 @@ ul {
 
 /* line 82, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product_list.scss */
 .single_product_item .single_product_text a {
-  color: #2f7dfc;
+  color: #4599df;
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 500;
@@ -2886,7 +2886,7 @@ ul {
   width: 50px;
   height: 50px;
   display: inherit;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   border-radius: 50%;
   line-height: 50px;
   text-align: center;
@@ -3005,7 +3005,7 @@ ul {
   line-height: 60px;
   padding: 0px 45px;
   border: 0px solid transparent;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -3051,7 +3051,7 @@ ul {
 
 /* line 20, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_best_seller.scss */
 .best_seller .single_product_item .single_product_text a {
-  color: #2f7dfc;
+  color: #4599df;
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 500;
@@ -3100,7 +3100,7 @@ ul {
 .subscribe_area h5 {
   font-size: 14px;
   font-weight: 400;
-  color: #2f7dfc;
+  color: #4599df;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -3142,7 +3142,7 @@ ul {
   line-height: 60px;
   padding: 0px 45px;
   border: 0px solid transparent;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   color: #fff;
   text-transform: uppercase;
   border-radius: 5px;
@@ -3285,7 +3285,7 @@ ul {
 /* line 37, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .single-product .product-img .p_icon a:hover {
   color: #fff;
-  background: #2f7dfc;
+  background: #4599df;
 }
 
 /* line 45, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -3328,7 +3328,7 @@ ul {
 
 /* line 82, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .single-product:hover .product-btm h4 {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* End Feature Product Area css
@@ -3571,8 +3571,8 @@ ul {
 
 /* line 300, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .p_filter_widgets .list li.active a:before, .p_filter_widgets .list li:hover a:before {
-  background: #2f7dfc;
-  border-color: #2f7dfc;
+  background: #4599df;
+  border-color: #4599df;
 }
 
 /* line 307, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -3718,7 +3718,7 @@ ul {
 
 /* line 448, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .product_top_bar .single_product_menu p span {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 453, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -3969,7 +3969,7 @@ ul {
 .s_product_text h2 {
   font-size: 24px;
   font-weight: bold;
-  color: #2f7dfc;
+  color: #4599df;
   margin-bottom: 15px;
 }
 
@@ -3999,7 +3999,7 @@ ul {
 
 /* line 716, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .s_product_text .list li a.active {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 719, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -4164,9 +4164,9 @@ ul {
 
 /* line 862, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .product_description_area .nav.nav-tabs li a.active {
-  background: #2f7dfc;
+  background: #4599df;
   color: #fff;
-  border-color: #2f7dfc;
+  border-color: #4599df;
 }
 
 /* line 871, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -4185,7 +4185,7 @@ ul {
 
 /* line 882, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .product_description_area .tab-content .total_rate .box_total h4 {
-  color: #2f7dfc;
+  color: #4599df;
   font-size: 48px;
   font-weight: bold;
 }
@@ -4333,8 +4333,8 @@ ul {
 
 /* line 1026, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .review_item .media .media-body .reply_btn:hover {
-  background: #2f7dfc;
-  border-color: #2f7dfc;
+  background: #4599df;
+  border-color: #4599df;
   color: #fff;
 }
 
@@ -4648,7 +4648,7 @@ ul {
   height: 10px;
   width: 10px;
   border-radius: 50%;
-  background: #2f7dfc;
+  background: #4599df;
   display: inline-block;
   position: absolute;
   right: 3px;
@@ -4793,7 +4793,7 @@ ul {
 
 /* line 1443, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .check_title h2 a {
-  color: #2f7dfc;
+  color: #4599df;
   text-decoration: underline;
 }
 
@@ -4991,9 +4991,9 @@ ul {
 
 /* line 1588, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .tp_btn:hover {
-  background: #2f7dfc;
+  background: #4599df;
   color: #fff;
-  border-color: #2f7dfc;
+  border-color: #4599df;
 }
 
 /* line 1596, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -5077,7 +5077,7 @@ ul {
 
 /* line 1650, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .billing_details .contact_form .form-group .creat_account a {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 1658, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -5196,8 +5196,8 @@ ul {
 
 /* line 1776, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .order_box .payment_item.active h4:before {
-  background: #2f7dfc;
-  border-color: #2f7dfc;
+  background: #4599df;
+  border-color: #4599df;
 }
 
 /* line 1784, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -5214,7 +5214,7 @@ ul {
 
 /* line 1793, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .order_box .creat_account a {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 1798, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -5390,8 +5390,8 @@ ul {
 
 /* line 1930, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .radion_btn input[type="radio"]:checked ~ .check {
-  border: 1px solid #2f7dfc;
-  background: #2f7dfc;
+  border: 1px solid #4599df;
+  background: #4599df;
 }
 
 /* line 1935, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -5435,9 +5435,9 @@ ul {
 
 /* line 1960, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .login_part .login_part_text {
-  background-image: -moz-linear-gradient(16deg, #ff005a 0%, #ff5d2d 64%, #ffba00 100%);
-  background-image: -webkit-linear-gradient(16deg, #ff005a 0%, #ff5d2d 64%, #ffba00 100%);
-  background-image: -ms-linear-gradient(16deg, #ff005a 0%, #ff5d2d 64%, #ffba00 100%);
+  background-image: -moz-linear-gradient(16deg,#44bff8 0%, #67e2f8 64%, #0494a7 100%);
+  background-image: -webkit-linear-gradient(16deg,#44bff8 0%, #67e2f8 64%, #0494a7 100%);
+  background-image: -ms-linear-gradient(16deg, #44bff8 0%, #67e2f8 64%, #0494a7 100%);
   background-size: 200% auto;
 }
 
@@ -5467,7 +5467,7 @@ ul {
 /* line 1981, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .login_part .login_part_text .btn_3:hover {
   background-color: #fff;
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 @media (max-width: 991px) {
@@ -5611,7 +5611,7 @@ ul {
 
 /* line 2101, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .s_product_text .like_us:hover {
-  background-color: #2f7dfc;
+  background-color: #4599df;
   color: #fff;
 }
 
@@ -5622,7 +5622,7 @@ ul {
 
 /* line 2108, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .s_product_text .btn_3:hover {
-  color: #2f7dfc;
+  color: #4599df;
   background-color: #fff;
   box-shadow: -14.142px 14.142px 20px 0px rgba(0, 0, 0, 0.1);
   border: 1px solid #fff;
@@ -5667,7 +5667,7 @@ ul {
 
 /* line 2150, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .card_area .social_icon a:hover {
-  background-color: #2f7dfc;
+  background-color: #4599df;
 }
 
 /* line 2155, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
@@ -5687,7 +5687,7 @@ ul {
 
 /* line 2167, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
 .cart_area .btn_1:hover {
-  border: 1px solid #2f7dfc !important;
+  border: 1px solid #4599df !important;
 }
 
 /************ new arrival css here ****************/
@@ -5824,7 +5824,7 @@ ul {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   opacity: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -5910,7 +5910,7 @@ ul {
 
 /* line 144, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
 .new_arrival .single_arrivel_item .hover_text .social_icon a:hover {
-  background-color: #2f7dfc;
+  background-color: #4599df;
   color: #fff;
 }
 
@@ -5943,7 +5943,7 @@ ul {
 .new_arrival .active {
   position: relative;
   z-index: 1;
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 173, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
@@ -5954,7 +5954,7 @@ ul {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: #2f7dfc;
+  background-color: #4599df;
 }
 
 /************ shipping details css here **************/
@@ -6044,7 +6044,7 @@ ul {
   height: 100%;
   left: 0;
   top: 0;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   opacity: 0;
   visibility: hidden;
   z-index: 1;
@@ -6098,7 +6098,7 @@ ul {
 
 /* line 6, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_confirmation_part.scss */
 .confirmation_part .confirmation_tittle span {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 11, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_confirmation_part.scss */
@@ -6210,7 +6210,7 @@ sup,
 sub,
 u,
 del {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 93, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
@@ -6382,28 +6382,28 @@ h6 {
 /* line 217, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .genric-btn.primary {
   color: #fff;
-  background: #2f7dfc;
+  background: #4599df;
   border: 1px solid transparent;
 }
 
 /* line 221, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .genric-btn.primary:hover {
-  color: #2f7dfc;
-  border: 1px solid #2f7dfc;
+  color: #4599df;
+  border: 1px solid #4599df;
   background: #fff;
 }
 
 /* line 227, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .genric-btn.primary-border {
-  color: #2f7dfc;
-  border: 1px solid #2f7dfc;
+  color: #4599df;
+  border: 1px solid #4599df;
   background: #fff;
 }
 
 /* line 231, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .genric-btn.primary-border:hover {
   color: #fff;
-  background: #2f7dfc;
+  background: #4599df;
   border: 1px solid transparent;
 }
 
@@ -6561,7 +6561,7 @@ h6 {
 .generic-blockquote {
   padding: 30px 50px 30px 30px;
   background: #f9f9ff;
-  border-left: 2px solid #2f7dfc;
+  border-left: 2px solid #4599df;
 }
 
 /* line 353, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
@@ -6716,7 +6716,7 @@ h6 {
   position: absolute;
   width: 14px;
   height: 14px;
-  border: 3px solid #2f7dfc;
+  border: 3px solid #4599df;
   background: #fff;
   top: 4px;
   left: 0;
@@ -6731,7 +6731,7 @@ h6 {
 /* line 475, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .ordered-list li {
   list-style-type: decimal-leading-zero;
-  color: #2f7dfc;
+  color: #4599df;
   font-weight: 500;
   line-height: 1.82em !important;
 }
@@ -6746,7 +6746,7 @@ h6 {
 .ordered-list-alpha li {
   margin-left: 30px;
   list-style-type: lower-alpha;
-  color: #2f7dfc;
+  color: #4599df;
   font-weight: 500;
   line-height: 1.82em !important;
 }
@@ -6761,7 +6761,7 @@ h6 {
 .ordered-list-roman li {
   margin-left: 30px;
   list-style-type: lower-roman;
-  color: #2f7dfc;
+  color: #4599df;
   font-weight: 500;
   line-height: 1.82em !important;
 }
@@ -6844,7 +6844,7 @@ h6 {
 /* line 568, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .single-input-primary:focus {
   outline: none;
-  border: 1px solid #2f7dfc;
+  border: 1px solid #4599df;
 }
 
 /* line 574, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
@@ -6912,7 +6912,7 @@ h6 {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #2f7dfc;
+  background: #4599df;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
@@ -7003,7 +7003,7 @@ h6 {
 
 /* line 696, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .primary-switch input:checked + label:before {
-  background: #2f7dfc;
+  background: #4599df;
 }
 
 /* line 704, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
@@ -7390,13 +7390,13 @@ h6 {
 
 /* line 1022, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .default-select .nice-select .list .option.selected {
-  color: #2f7dfc;
+  color: #4599df;
   background: transparent;
 }
 
 /* line 1026, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .default-select .nice-select .list .option:hover {
-  color: #2f7dfc;
+  color: #4599df;
   background: transparent;
 }
 
@@ -7453,13 +7453,13 @@ h6 {
 
 /* line 1067, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .form-select .nice-select .list .option.selected {
-  color: #2f7dfc;
+  color: #4599df;
   background: transparent;
 }
 
 /* line 1071, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_elements.scss */
 .form-select .nice-select .list .option:hover {
-  color: #2f7dfc;
+  color: #4599df;
   background: transparent;
 }
 
@@ -7637,7 +7637,7 @@ h6 {
   height: 10px;
   top: 5px;
   left: 0;
-  background-color: #2f7dfc;
+  background-color: #4599df;
   border-radius: 50%;
 }
 
@@ -7726,7 +7726,7 @@ h6 {
 .blog_part .single-home-blog .card h5:hover {
   -webkit-transition: 0.8s;
   transition: 0.8s;
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 139, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_blog_part.scss */
@@ -7803,7 +7803,7 @@ h6 {
 
 /* line 23, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_contact.scss */
 .contact-info .media-body h3 a:hover {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 29, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_contact.scss */
@@ -7867,13 +7867,13 @@ h6 {
 
 /* line 77, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_contact.scss */
 .form-contact .form-group .btn_1:hover {
-  border: 1px solid #2f7dfc;
-  color: #2f7dfc !important;
+  border: 1px solid #4599df;
+  color: #4599df !important;
 }
 
 /* line 80, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_contact.scss */
 .form-contact .form-group .btn_1:hover i {
-  color: #2f7dfc;
+  color: #4599df;
   color: #fff !important;
 }
 
@@ -8086,7 +8086,7 @@ h6 {
 
 /* line 28, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
 .footer_part .single_footer_part span {
-  color: #2f7dfc;
+  color: #4599df;
   text-transform: capitalize;
 }
 
@@ -8178,7 +8178,7 @@ h6 {
 
 /* line 88, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
 .footer_part .single_footer_part .list-unstyled li a:hover {
-  color: #2f7dfc !important;
+  color: #4599df !important;
 }
 
 /* line 94, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
@@ -8193,7 +8193,7 @@ h6 {
   padding: 14px 15px;
   font-size: 13px;
   border-radius: 0;
-  border: 1px solid #2f7dfc;
+  border: 1px solid #4599df;
   width: 80%;
   background-color: transparent;
   color: #fff;
@@ -8201,12 +8201,12 @@ h6 {
 
 /* line 108, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
 .footer_part .single_footer_part .mail_part .email_icon {
-  background-color: #2f7dfc;
+  background-color: #4599df;
   text-align: center;
   color: #fff;
   border-radius: 0;
   line-height: 10px;
-  border: 2px solid #2f7dfc;
+  border: 2px solid #4599df;
   text-transform: capitalize;
   padding: 14px 20px;
   height: 50px;
@@ -8235,7 +8235,7 @@ h6 {
 
 /* line 135, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
 .footer_part .copyright_text span {
-  color: #2f7dfc;
+  color: #4599df;
   font-size: 12px;
 }
 
@@ -8248,14 +8248,14 @@ h6 {
 
 /* line 147, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
 .footer_part .copyright_text p a {
-  color: #2f7dfc;
+  color: #4599df;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 /* line 151, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
 .footer_part .copyright_text p a:hover {
-  color: #2f7dfc;
+  color: #4599df;
 }
 
 /* line 156, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_footer.scss */
