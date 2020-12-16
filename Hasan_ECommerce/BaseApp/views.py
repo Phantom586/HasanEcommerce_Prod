@@ -4,16 +4,18 @@ from django.db.models import F, Sum
 from django.contrib.auth.decorators import login_required
 from .models import (
     Clothing, Categories, Color, Size, 
-    ProductImages, InvoiceTable, BasketTable
+    ProductImages, InvoiceTable, BasketTable,
+    UserTable
 )
 
 
-def get_nav_categories():
+def get_nav_categories(u_id):
 
     category_men = list(Categories.objects.filter(gender="men"))
     category_woman = list(Categories.objects.filter(gender="woman"))
+    user = UserTable.objects.get(id=u_id)
 
-    return [category_men, category_woman]
+    return [category_men, category_woman, user.name]
 
 
 class IndexView(TemplateView):
@@ -24,10 +26,13 @@ class IndexView(TemplateView):
 
         context = super().get_context_data(**kwargs)
 
-        result = get_nav_categories()
+        u_id = self.request.user.id
+
+        result = get_nav_categories(u_id)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
+        context['username'] = result[2]
 
         return context
 
@@ -57,10 +62,13 @@ class ProductsView(TemplateView):
             clothes['size'] = cloth_sizes
             # print(clothes)
 
-        result = get_nav_categories()
+        u_id = self.request.user.id
+
+        result = get_nav_categories(u_id)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
+        context['username'] = result[2]
 
         context['products'] = clothes_list
         context['categories'] = category_list
@@ -97,10 +105,13 @@ class ProductsByCategory(TemplateView):
             clothes['size'] = cloth_sizes
             # print(clothes)
             
-        result = get_nav_categories()
+        u_id = self.request.user.id
+
+        result = get_nav_categories(u_id)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
+        context['username'] = result[2]
 
         context['products'] = clothes_list
         context['categories'] = category_list
@@ -129,10 +140,13 @@ class ProductDesc(TemplateView):
         p_size = Size.objects.filter(id=p_id)
         p_images = ProductImages.objects.filter(id=p_id)
 
-        result = get_nav_categories()
+        u_id = self.request.user.id
+
+        result = get_nav_categories(u_id)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
+        context['username'] = result[2]
         context['product_details'] = p_details
         context['category'] = p_cat
         context['type'] = p_type.title()
@@ -146,15 +160,16 @@ class ProductDesc(TemplateView):
 @login_required
 def AddToCart(request, pg, id, mrp, gender, category):
 
-    result = get_nav_categories()
+    user_id = request.user.id
+
+    result = get_nav_categories(user_id)
 
     context = {}
 
     context['categories_men'] = result[0]
     context['categories_woman'] = result[1]
+    context['username'] = result[2]
 
-    user_id = request.user.id
-    
     p_size = request.GET["p_size"]
     p_color = request.GET["p_color"]
     p_qty = request.GET["p_qty"]
@@ -194,9 +209,9 @@ class Cart(TemplateView):
 
         context = super().get_context_data(**kwargs)
 
-        result = get_nav_categories()
-
         u_id = self.request.user.id
+
+        result = get_nav_categories(u_id)
 
         products_list = list(BasketTable.objects.filter(user_id=u_id).values())
         total_amount = BasketTable.objects.filter(user_id=u_id).aggregate(Sum('total_mrp'))
@@ -209,6 +224,7 @@ class Cart(TemplateView):
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
+        context['username'] = result[2]
         context['total_amount'] = total_amount
         context['products_list'] = products_list
 
@@ -232,5 +248,68 @@ def Update_Quantity(request, opr, cloth_id):
             # Deleting the Record.
             BasketTable.objects.filter(user_id=u_id, cloth_id=cloth_id).delete()
 
-    return redirect('/home/products/cart')
+    return redirect('/home/cart')
+
+
+class Checkout(TemplateView):
+
+    template_name = 'BaseApp/checkout.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        u_id = self.request.user.id
+
+        result = get_nav_categories(u_id)
+
+        products_list = list(BasketTable.objects.filter(user_id=u_id).values())
+        total_amount = BasketTable.objects.filter(user_id=u_id).aggregate(Sum('total_mrp'))
+        total_amount = total_amount['total_mrp__sum']
+
+        for product in products_list:
+            cloth_id = product['cloth_id']
+            cloth = Clothing.objects.get(id=cloth_id)
+            product['name'] = cloth.product_name
+
+        context['categories_men'] = result[0]
+        context['categories_woman'] = result[1]
+        context['username'] = result[2]
+        context['total_amount'] = total_amount
+        context['final_amt'] = total_amount + 50
+        context['products_list'] = products_list
+
+        return context
+
+
+class Confirmation(TemplateView):
+
+    template_name = 'BaseApp/confirm.html'
+
+    def post(self, request, *args, **kwargs):
+
+        if request.method == "POST":
+
+            addr = request.POST["addr"]
+            city = request.POST["city"]
+            pincode = request.POST["zip"]
+
+            user = UserTable.objects.filter(id=request.user.id).update(address=addr, city=city, pincode=pincode)
+
+            return render(request, 'BaseApp/confirm.html', {})
+
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        u_id = self.request.user.id
+
+        result = get_nav_categories(u_id)
+
+        context['categories_men'] = result[0]
+        context['categories_woman'] = result[1]
+        context['username'] = result[2]
+
+        return context
     

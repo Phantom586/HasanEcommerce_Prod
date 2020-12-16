@@ -42,7 +42,7 @@
                     <p>
                         {{ product_details.product_desc }}
                     </p>
-                    <form action="/home/products/add_to_cart/c0929b/{{ product_details.id }}/{{ product_details.price }}/{{ product_details.gender }}/{{ product_details.category }}" method="get">
+                    <form action="/home/add_to_cart/c0929b/{{ product_details.id }}/{{ product_details.price }}/{{ product_details.gender }}/{{ product_details.category }}" method="get">
                         {% if product_details.quantity > 0 %}
                         <div class="row">
                             <div class="col-6">

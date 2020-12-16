@@ -114,7 +114,10 @@ class UserTable(models.Model):
     name = models.CharField(db_column='Name', max_length=100)  # Field name made lowercase.
     phone_no = models.CharField(db_column='Phone_No', max_length=13)  # Field name made lowercase.
     email = models.CharField(db_column='Email', max_length=60)  # Field name made lowercase.
-    signup_timestamp = models.DateTimeField(db_column='SignUp_Timestamp', auto_now_add=True)  # Field name made lowercase.
+    address = models.CharField(db_column='Address', max_length=255)  # Field name made lowercase.
+    city = models.CharField(db_column='City', max_length=60)  # Field name made lowercase.
+    pincode = models.CharField(db_column='Pincode', max_length=15)  # Field name made lowercase.
+    signup_timestamp = models.DateTimeField(db_column='SignUp_Timestamp')  # Field name made lowercase.
 
     class Meta:
         managed = False
