@@ -2431,7 +2431,7 @@ ul {
 .banner_part {
   position: sticky;
   background-color: #f9fdff;
-  background-image: url("../img/latest.png");
+  background-image: url("/media/img/latest.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2439,7 +2439,7 @@ ul {
 .banner_part2 {
   position: sticky;
   background-color: #f9fdff;
-  background-image: url("../img/men.png");
+  background-image: url("/media/img/men.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2447,7 +2447,7 @@ ul {
 .banner_part3 {
   position: sticky;
   background-color: #f9fdff;
-  background-image: url("../img/women.jpeg");
+  background-image: url("/media/img/women.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
