@@ -9,13 +9,18 @@ from .models import (
 )
 
 
-def get_nav_categories(u_id):
+def get_nav_categories(u_id, logged_in=False):
 
     category_men = list(Categories.objects.filter(gender="men"))
     category_woman = list(Categories.objects.filter(gender="woman"))
-    user = UserTable.objects.get(id=u_id)
 
-    return [category_men, category_woman, user.name]
+    u_name = ""
+
+    if logged_in:
+        user = UserTable.objects.get(id=u_id)
+        u_name = user.name
+
+    return [category_men, category_woman, u_name]
 
 
 class IndexView(TemplateView):
@@ -28,7 +33,9 @@ class IndexView(TemplateView):
 
         u_id = self.request.user.id
 
-        result = get_nav_categories(u_id)
+        logged_in = self.request.user.is_authenticated
+
+        result = get_nav_categories(u_id, logged_in)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
@@ -64,7 +71,9 @@ class ProductsView(TemplateView):
 
         u_id = self.request.user.id
 
-        result = get_nav_categories(u_id)
+        logged_in = self.request.user.is_authenticated
+
+        result = get_nav_categories(u_id, logged_in)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
@@ -107,7 +116,9 @@ class ProductsByCategory(TemplateView):
             
         u_id = self.request.user.id
 
-        result = get_nav_categories(u_id)
+        logged_in = self.request.user.is_authenticated
+
+        result = get_nav_categories(u_id, logged_in)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
@@ -142,7 +153,9 @@ class ProductDesc(TemplateView):
 
         u_id = self.request.user.id
 
-        result = get_nav_categories(u_id)
+        logged_in = self.request.user.is_authenticated
+
+        result = get_nav_categories(u_id, logged_in)
 
         context['categories_men'] = result[0]
         context['categories_woman'] = result[1]
