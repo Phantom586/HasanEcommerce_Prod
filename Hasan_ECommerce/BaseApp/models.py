@@ -23,7 +23,7 @@ class Clothing(models.Model):
     gender = models.CharField(db_column='Gender', max_length=15)  # Field name made lowercase.
     category = models.CharField(db_column='Category', max_length=50)  # Field name made lowercase.
     quantity = models.IntegerField(db_column='Quantity')  # Field name made lowercase.
-    timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
+    timestamp = models.DateTimeField(db_column='Timestamp', auto_now_add=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -80,7 +80,7 @@ class InvoiceTable(models.Model):
     payment_mode = models.CharField(db_column='Payment_Mode', max_length=50)  # Field name made lowercase.
     user = models.CharField(db_column='User', max_length=13)  # Field name made lowercase.
     total_mrp = models.FloatField(db_column='Total_MRP')  # Field name made lowercase.
-    timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
+    timestamp = models.DateTimeField(db_column='Timestamp', auto_now_add=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -117,7 +117,7 @@ class UserTable(models.Model):
     address = models.CharField(db_column='Address', max_length=255)  # Field name made lowercase.
     city = models.CharField(db_column='City', max_length=60)  # Field name made lowercase.
     pincode = models.CharField(db_column='Pincode', max_length=15)  # Field name made lowercase.
-    signup_timestamp = models.DateTimeField(db_column='SignUp_Timestamp')  # Field name made lowercase.
+    signup_timestamp = models.DateTimeField(db_column='SignUp_Timestamp', auto_now_add=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
