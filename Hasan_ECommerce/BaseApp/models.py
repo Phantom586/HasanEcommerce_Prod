@@ -23,6 +23,7 @@ class Clothing(models.Model):
     gender = models.CharField(db_column='Gender', max_length=15)  # Field name made lowercase.
     category = models.CharField(db_column='Category', max_length=50)  # Field name made lowercase.
     quantity = models.IntegerField(db_column='Quantity')  # Field name made lowercase.
+    timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
 
     class Meta:
         managed = False
