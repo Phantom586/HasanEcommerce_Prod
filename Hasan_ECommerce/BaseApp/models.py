@@ -93,7 +93,7 @@ class BasketTable(models.Model):
     user_id = models.IntegerField(db_column='User_ID', primary_key=True)  # Field name made lowercase.
     cloth_id = models.IntegerField(db_column='Cloth_ID')  # Field name made lowercase.
     quantity = models.IntegerField(db_column='Quantity')  # Field name made lowercase.
-    timestamp = models.DateTimeField(db_column='Timestamp')  # Field name made lowercase.
+    timestamp = models.DateTimeField(db_column='Timestamp', auto_now_add=True)  # Field name made lowercase.
     mrp = models.FloatField(db_column='MRP')  # Field name made lowercase.
     size = models.CharField(db_column='Size', max_length=5)  # Field name made lowercase.
     color = models.CharField(db_column='Color', max_length=50)  # Field name made lowercase.
