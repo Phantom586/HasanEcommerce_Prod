@@ -1,0 +1,107 @@
+{% extends 'BaseApp/base.html' %}
+
+{% load static %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block content %}
+
+    <!-- breadcrumb start-->
+        <section class="breadcrumb breadcrumb_bg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb_iner">
+                            <div class="breadcrumb_iner_item">
+                                <p>Home/Product  Details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb start-->
+
+    <!--================Single Product Area =================-->
+        <div class="product_image_area section_padding">
+            <div class="container">
+                <div class="s_product_text">
+                    <h3>{{ product_details.product_name }}</h3>
+                </div>
+            <div class="row s_product_inner">
+                <div class="col-lg-5">
+                    <div class="s_product_text">
+                        <h2 style="color: #595959;">Sizes : </h2>
+                        <div class="table-responsive scrollable" style="overflow-y: auto; height:200px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Options</td>
+                                        <th scope="col">Size</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="add/f7bd60"><img src="/media/icons/add.png" alt=""></a>
+                                        </td>
+                                        <td><input type="text"></td>
+                                    </tr>
+                                    {% for size in sizes %}
+                                        <tr>
+                                            <td>
+                                                <a href="delete/f7bd60/{{ size.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                            </td>
+                                            <td>
+                                                {{ size.name }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h2 class="mt-2" style="color: #595959;">Colors :</h2>
+                    <div class="table-responsive scrollable" style="overflow-y: auto; height:200px;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Options</td>
+                                    <th scope="col">Color</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="add/70dda5"><img src="/media/icons/add.png" alt=""></a>
+                                    </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                {% for color in colors %}
+                                    <tr>
+                                        <td>
+                                            <a href="delete/70dda5/{{ color.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                        </td>
+                                        <td>
+                                            {{ color.name }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <form action="/home/add_to_cart/c0929b/{{ product_details.id }}/{{ product_details.price }}/{{ product_details.gender }}/{{ product_details.category }}" method="get">
+                        
+                    </form> -->
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!--================End Single Product Area =================-->
+
+    {% endblock %}

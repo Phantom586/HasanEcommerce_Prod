@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['www.noirmode.in']
 INSTALLED_APPS = [
     'BaseApp.apps.BaseappConfig',
     'LoginApp.apps.LoginappConfig',
+    'AdminApp.apps.AdminappConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
