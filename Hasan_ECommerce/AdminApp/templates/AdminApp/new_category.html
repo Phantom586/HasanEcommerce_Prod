@@ -1,0 +1,109 @@
+{% extends 'BaseApp/base.html' %}
+
+    {% block content %}
+
+        <!-- breadcrumb start-->
+        <section class="breadcrumb breadcrumb_bg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb_iner">
+                            <div class="breadcrumb_iner_item">
+                                <p>Home/<a href="{% url 'admin_app:ad_all_prods' %}">All Products/</a>Add Category</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb start-->
+
+        <div class="product_image_area section_padding">
+            <div class="container">
+                <div class="s_product_text">
+                    <h3>Add New Category</h3>
+                </div>
+                <div class="row s_product_inner">
+                    <div class="col-lg-5">
+                        <div class="s_product_text">
+                            <h2 style="color: #595959;">Men : </h2>
+                            <div class="table-responsive scrollable" style="overflow-y: auto; height:200px;">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Options</td>
+                                            <th scope="col">Category Name</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <td>
+                                                    <button class="option_btn" type="submit">Add</button>
+                                                </td>
+                                                <td>
+                                                    <input type="hidden" name="gender" value="men">
+                                                    <input type="text" name="cat_name" required>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                        {% for cat in categories_men %}
+                                            <tr>
+                                                <td>
+                                                    <a href="delete/{{ cat.gender }}/{{ cat.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                                </td>
+                                                <td>
+                                                    {{ cat.name }}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                    <div class="s_product_text">
+                        <h2 class="mt-2" style="color: #595959;">Women :</h2>
+                        <div class="table-responsive scrollable" style="overflow-y: auto; height:200px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Options</td>
+                                        <th scope="col">Category Name</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <td>
+                                                <button class="option_btn" type="submit">Add</button>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" name="gender" value="women">
+                                                <input type="text" name="cat_name" required>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                    {% for cat in categories_women %}
+                                        <tr>
+                                            <td>
+                                                <a href="delete/{{ cat.gender }}/{{ cat.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                            </td>
+                                            <td>
+                                                {{ cat.name }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

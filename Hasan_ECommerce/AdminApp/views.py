@@ -222,3 +222,43 @@ def DeleteProductImages(request, id):
     DeleteImages(id)
 
     return redirect(f'/0baea2/admin/products/{id}')
+
+
+class AddCategory(TemplateView):
+
+    template_name = 'AdminApp/new_category.html'
+
+    def post(self, request, *args, **kwargs):
+
+        gender = request.POST["gender"]
+        cat_name = request.POST["cat_name"]
+
+        create_category = Categories.objects.create(
+            name = cat_name,
+            gender = gender
+        )
+
+        return redirect('admin_app:ad_new_cat')
+
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+
+        u_id = self.request.user.id
+
+        logged_in = self.request.user.is_authenticated
+
+        result = get_nav_categories(u_id, logged_in)
+
+        context['categories_men'] = result[0]
+        context['categories_women'] = result[1]
+        context['username'] = result[2]
+
+        return context
+
+
+def DeleteCategory(request, gender, name):
+
+    product_attr = Categories.objects.filter(name=name, gender=gender).delete()
+
+    return redirect('admin_app:ad_new_cat')
