@@ -126,8 +126,8 @@
 
                         } else if (val == "woman") {
 
-                            var restStuff =  "{% for cat in categories_woman %}<li data-value='{{ cat.name }}' class='option'>{{ cat.name }}</li>{% endfor %}";
-                            var selectStuff = "{% for cat in categories_woman %}<option value='{{ cat.name }}'>{{ cat.name }}</option>{% endfor %}";
+                            var restStuff =  "{% for cat in categories_women %}<li data-value='{{ cat.name }}' class='option'>{{ cat.name }}</li>{% endfor %}";
+                            var selectStuff = "{% for cat in categories_women %}<option value='{{ cat.name }}'>{{ cat.name }}</option>{% endfor %}";
                             $("#cat_p > .nice-select > .current").html("Choose Category");
                             $("#product_category").html(selectStuff);
                             $("#cat_p > .nice-select > .list").html(restStuff);
