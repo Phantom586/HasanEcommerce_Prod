@@ -3,9 +3,7 @@ from django.views.generic import TemplateView
 from django.db.models import F, Sum
 from django.contrib import messages
 from django.contrib.auth import login
-from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.models import User
 from .models import (
     Clothing, Categories, Color, Size, 
@@ -320,94 +318,6 @@ class Checkout(TemplateView):
 class Confirmation(TemplateView):
 
     template_name = 'BaseApp/confirm.html'
-
-    def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(**kwargs)
-
-        u_id = self.request.user.id
-
-        logged_in = self.request.user.is_authenticated
-
-        result = get_nav_categories(u_id, logged_in)
-
-        context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
-        context['username'] = result[2]
-
-        return context
-
-
-class ForgotPassword(TemplateView):
-
-    template_name  = 'BaseApp/forgotPass.html'
-
-    def post(self, request, *args, **kwargs):
-
-        if request.method == "POST":
-
-            email = request.POST["email"]
-            phone_no = request.POST["phone"]
-            print(email, phone_no)
-
-            user_exists = UserTable.objects.filter(phone_no=phone_no, email=email).count()
-            print(user_exists)
-
-            if user_exists > 0:
-                return redirect('/home/reset_password/')
-            else:
-                messages.warning(request, 'You\'ve Entered  Invalid Email or Phone No.')
-                return redirect('/home/forgot_password/')
-
-    def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(**kwargs)
-
-        u_id = self.request.user.id
-
-        logged_in = self.request.user.is_authenticated
-
-        result = get_nav_categories(u_id, logged_in)
-
-        context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
-        context['username'] = result[2]
-        print(context['username'] )
-
-        return context
-
-
-class ResetPassword(TemplateView):
-
-    template_name  = 'BaseApp/resetPass.html'
-
-    def post(self, request, *args, **kwargs):
-
-        if request.method == "POST":
-
-            password = request.POST["first_pass"]
-            conf_pass = request.POST["sec_pass"]
-
-            if password == conf_pass:
-                # Validating the entered pass with in-built validator.
-                try:
-                    is_valid = validate_password(conf_pass)
-                    if is_valid is None:
-                        # Retrieving the user from User Model.
-                        user = User.objects.get(id=request.user.id)
-                        user.set_password(conf_pass)
-                        user.save()
-                        # Logging in the user.
-                        login(request, user)
-                        return redirect('hasan-home')
-                except ValidationError as ve:
-                    for warning in ve:
-                        messages.warning(request, warning)
-                    return redirect('/home/reset_password/')
-            else:
-                messages.warning(request, 'Entered passwords don\'t match.')
-                return redirect('/home/reset_password/')
-
 
     def get_context_data(self, **kwargs):
 

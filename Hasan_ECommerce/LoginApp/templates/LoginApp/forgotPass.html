@@ -9,7 +9,7 @@
                     <div class="col-lg-12">
                         <div class="breadcrumb_iner">
                             <div class="breadcrumb_iner_item">
-                                <p>Home / Forgot Password</p>
+                                <p> Forgot Password</p>
                             </div>
                         </div>
                     </div>
@@ -26,15 +26,16 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="login_part_text text-center">
                                 <div class="login_part_text_iner">
-                                    <h2>Create a memorable strong password</h2>
+                                    <h2>Sad You Forgot the password</h2>
+                                    <p>To Reset your password enter the correct email and mobile no. associated with your account and you will be redirected to the password reset page.</p>
                                 </div>
                             </div>
                         </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="login_part_form">
                             <div class="login_part_form_iner">
-                                <h3>Enter new password!</h3>
-                                <form class="row contact_form" action="/home/reset_password/" method="post">
+                                <h3>Forgot Password!</h3>
+                                <form class="row contact_form" method="post">
                                     {% if messages %}
                                         {% for message in messages %}
                                             <div class="alert alert-danger">
@@ -44,16 +45,16 @@
                                     {% endif %}
                                     {% csrf_token %}
                                     <div class="col-md-12 form-group p_star">
-                                        <input type="password" class="form-control" id="name" name="first_pass" required
-                                            placeholder="Password">
+                                        <input type="email" class="form-control" id="name" name="email" required
+                                            placeholder="Email">
                                     </div>
                                     <div class="col-md-12 form-group p_star">
-                                        <input type="password" class="form-control" id="password" name="sec_pass" required
-                                            placeholder="Confirm Password">
+                                        <input type="text" class="form-control" id="name1" name="phone" required
+                                            placeholder="Phone no.">
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <button type="submit" value="submit" class="btn_3">
-                                            Change
+                                            Verify
                                         </button>
                                     </div>
                                 </form>
