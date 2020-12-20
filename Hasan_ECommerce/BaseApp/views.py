@@ -387,7 +387,7 @@ class Confirmation(TemplateView):
         user = UserTable.objects.get(id=u_id)
         
         invoice = InvoiceTable.objects.get(receipt_no=order_id)
-        order_time = invoice.timestamp.strftime("%b %w, %Y  %I:%M %p")
+        order_time = invoice.timestamp.strftime("%b %d, %Y  %I:%M %p")
         sess_id = invoice.session_id
 
         products_list = list(BasketTable.objects.filter(user_id=u_id, session_id=sess_id).values())
@@ -471,7 +471,7 @@ class Orders(TemplateView):
                 product['name'] = cloth.product_name
             total_amount = BasketTable.objects.filter(user_id=u_id, session_id=sess_id).aggregate(Sum('total_mrp'))
             total_amount = total_amount['total_mrp__sum']
-            order_time = invoice['timestamp'].strftime("%b %w, %Y  %I:%M %p")
+            order_time = invoice['timestamp'].strftime("%b %d, %Y  %I:%M %p")
             invoice['products_list'] = products_list
             invoice['subtotal'] = total_amount
             invoice['order_time'] = order_time
