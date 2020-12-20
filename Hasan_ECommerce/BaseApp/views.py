@@ -12,6 +12,7 @@ from .models import (
     UserTable, TempBasket
 )
 
+shipping_charge = 50
 
 def get_nav_categories(u_id, logged_in=False):
 
@@ -274,7 +275,6 @@ class Checkout(TemplateView):
             addr = request.POST["addr"]
             city = request.POST["city"]
             pincode = request.POST["zip"]
-            print(addr, city, pincode)
 
             user = UserTable.objects.filter(id=request.user.id).update(address=addr, city=city, pincode=pincode)
 
@@ -284,6 +284,8 @@ class Checkout(TemplateView):
             u_id = request.user.id
             total_mrp= TempBasket.objects.filter(user_id=u_id).aggregate(Sum('total_mrp'))
             total_mrp = total_mrp['total_mrp__sum']
+            # adding shipping charge to total_mrp
+            total_mrp = int(total_mrp) + shipping_charge
             sess_id = request.session["Sess_ID"]
 
             # storing the order in InvoiceTable.
@@ -295,6 +297,8 @@ class Checkout(TemplateView):
                 user = u_id,
                 total_mrp = total_mrp
             )
+
+            order_id = create_order.receipt_no
 
             # moving the products to be purchased to BasketTable.
             products_list = list(TempBasket.objects.filter(user_id=u_id).values())
@@ -318,7 +322,7 @@ class Checkout(TemplateView):
             request.session['Sess_ID'] = str(uuid.uuid4().hex)
             print(request.session['Sess_ID'])
 
-            return redirect('base_app:confirm')
+            return redirect(f'/home/confirmation/{order_id}')
 
     def get_context_data(self, **kwargs):
 
@@ -356,7 +360,7 @@ class Checkout(TemplateView):
         context['categories_women'] = result[1]
         context['username'] = result[2]
         context['total_amount'] = total_amount
-        context['final_amt'] = total_amount + 50
+        context['final_amt'] = total_amount + shipping_charge
         context['products_list'] = products_list
         context['address'] = addr
         context['city'] = city
@@ -374,13 +378,20 @@ class Confirmation(TemplateView):
         context = super().get_context_data(**kwargs)
 
         u_id = self.request.user.id
+        order_id = self.kwargs['order_id']
 
         logged_in = self.request.user.is_authenticated
 
         result = get_nav_categories(u_id, logged_in)
 
-        products_list = list(BasketTable.objects.filter(user_id=u_id).values())
-        total_amount = BasketTable.objects.filter(user_id=u_id).aggregate(Sum('total_mrp'))
+        user = UserTable.objects.get(id=u_id)
+        
+        invoice = InvoiceTable.objects.get(receipt_no=order_id)
+        order_time = invoice.timestamp.strftime("%b %w, %Y  %I:%M %p")
+        sess_id = invoice.session_id
+
+        products_list = list(BasketTable.objects.filter(user_id=u_id, session_id=sess_id).values())
+        total_amount = BasketTable.objects.filter(user_id=u_id, session_id=sess_id).aggregate(Sum('total_mrp'))
         total_amount = total_amount['total_mrp__sum']
 
         for product in products_list:
@@ -393,6 +404,9 @@ class Confirmation(TemplateView):
         context['username'] = result[2]
         context['total_amount'] = total_amount
         context['products_list'] = products_list
+        context['ordered_on'] = order_time
+        context['invoice'] = invoice
+        context['s_user'] = user
 
         return context
 
@@ -425,5 +439,47 @@ class NewCollection(TemplateView):
         context['categories_women'] = result[1]
         context['username'] = result[2]
         context['latest_prods'] = latest_prods
+
+        return context
+
+
+class Orders(TemplateView):
+
+    template_name = 'BaseApp/orders.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        u_id = self.request.user.id
+
+        logged_in = self.request.user.is_authenticated
+
+        result = get_nav_categories(u_id, logged_in)
+        
+        user = UserTable.objects.get(id=u_id)
+
+        Invoices = list(InvoiceTable.objects.filter(user=u_id).values())
+
+        for invoice in Invoices:
+            sess_id = invoice['session_id']
+            # Retrieving the products purchased in this order.
+            products_list = list(BasketTable.objects.filter(user_id=u_id, session_id=sess_id).values())
+            for product in products_list:
+                cloth_id = product['cloth_id']
+                cloth = Clothing.objects.get(id=cloth_id)
+                product['name'] = cloth.product_name
+            total_amount = BasketTable.objects.filter(user_id=u_id, session_id=sess_id).aggregate(Sum('total_mrp'))
+            total_amount = total_amount['total_mrp__sum']
+            order_time = invoice['timestamp'].strftime("%b %w, %Y  %I:%M %p")
+            invoice['products_list'] = products_list
+            invoice['subtotal'] = total_amount
+            invoice['order_time'] = order_time
+
+        context['categories_men'] = result[0]
+        context['categories_women'] = result[1]
+        context['username'] = result[2]
+        context['invoices'] = Invoices
+        context['s_user'] = user
 
         return context

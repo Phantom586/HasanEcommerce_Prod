@@ -116,7 +116,7 @@ class BasketTable(models.Model):
     class Meta:
         managed = False
         db_table = 'basket_table'
-        unique_together = (('user_id', 'cloth_id'),)
+        unique_together = (('user_id', 'cloth_id', 'session_id'),)
 
     def __str__(self):
         return f'{self.user} | {self.cloth_id} | {self.quantity}'
