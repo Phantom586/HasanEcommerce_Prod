@@ -27,15 +27,25 @@
                 <div class="col-lg-8">
                     <h3>Billing Details</h3>
                     <div class="col-md-12 form-group p_star">
-                        <input type="text" class="form-control" id="add1" name="addr" placeholder="Address*" required>
-                        <!-- <span class="placeholder" data-placeholder="Address"></span> -->
+                        {% if address %}
+                            <input type="text" class="form-control" id="add1" name="addr" value="{{ address }}">
+                        {% else %}
+                            <input type="text" class="form-control" id="add1" name="addr" placeholder="Address*" required>
+                        {% endif %}
                     </div>
                     <div class="col-md-12 form-group p_star">
-                        <input type="text" class="form-control" id="city" name="city" placeholder="City*"  required>
-                        <!-- <span class="placeholder" data-placeholder="Town/City"></span> -->
+                        {% if city %}
+                            <input type="text" class="form-control" id="city" name="city" value="{{ city }}">
+                        {% else %}
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City*"  required>
+                        {% endif %}
                     </div>
                     <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="zip" name="zip" placeholder="Pincode" required>
+                        {% if city %}
+                            <input type="text" class="form-control" id="zip" name="zip" value="{{ pincode }}">
+                        {% else %}
+                            <input type="text" class="form-control" id="zip" name="zip" placeholder="Pincode" required>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-lg-4">

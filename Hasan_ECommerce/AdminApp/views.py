@@ -11,7 +11,7 @@ from BaseApp.models import (
 def get_nav_categories(u_id, logged_in=False):
 
     category_men = list(Categories.objects.filter(gender="men"))
-    category_woman = list(Categories.objects.filter(gender="woman"))
+    category_women = list(Categories.objects.filter(gender="women"))
 
     u_name = ""
 
@@ -19,7 +19,7 @@ def get_nav_categories(u_id, logged_in=False):
         user = UserTable.objects.get(id=u_id)
         u_name = user.name
 
-    return [category_men, category_woman, u_name]
+    return [category_men, category_women, u_name]
 
 
 class AllProducts(TemplateView):
@@ -60,7 +60,7 @@ class AllProducts(TemplateView):
         products_list = list(Clothing.objects.all())
 
         context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
+        context['categories_women'] = result[1]
         context['username'] = result[2]
         context['products_list'] = products_list
 
@@ -107,7 +107,7 @@ class ProductDetails(TemplateView):
         result = get_nav_categories(u_id, logged_in)
 
         context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
+        context['categories_women'] = result[1]
         context['username'] = result[2]
         context['product_details'] = p_details
         context['colors'] = p_colors
@@ -176,7 +176,7 @@ class AddNewProduct(TemplateView):
         result = get_nav_categories(u_id, logged_in)
 
         context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
+        context['categories_women'] = result[1]
         context['username'] = result[2]
 
         return context

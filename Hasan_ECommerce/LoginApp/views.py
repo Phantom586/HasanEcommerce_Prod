@@ -7,14 +7,15 @@ from django.views.generic import TemplateView
 from BaseApp.models import Categories, UserTable
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
+import uuid
 
 # Create your views here.
 def get_nav_categories():
 
     category_men = list(Categories.objects.filter(gender="men"))
-    category_woman = list(Categories.objects.filter(gender="woman"))
+    category_women = list(Categories.objects.filter(gender="women"))
 
-    return [category_men, category_woman]
+    return [category_men, category_women]
 
 
 def Register(request):
@@ -48,7 +49,7 @@ def Register(request):
         result = get_nav_categories()
 
         context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
+        context['categories_women'] = result[1]
 
     return render(request, 'LoginApp/register.html', {'form':form, 'data' :context})
 
@@ -63,6 +64,8 @@ def Login(request):
 
         if user is not None:
             login(request, user)
+            # Setting the Session_ID for the current Session.
+            request.session['Sess_ID'] = str(uuid.uuid4().hex)
             return redirect('hasan-home')
         else:
             messages.warning(request, "Entered username or password is incorrect.")
@@ -73,7 +76,7 @@ def Login(request):
     context = {}
 
     context['categories_men'] = result[0]
-    context['categories_woman'] = result[1]
+    context['categories_women'] = result[1]
 
     return render(request, 'LoginApp/login.html', {'data':context})
 
@@ -115,7 +118,7 @@ class ForgotPassword(TemplateView):
         result = get_nav_categories()
 
         context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
+        context['categories_women'] = result[1]
 
         return context
 
@@ -158,6 +161,6 @@ class ResetPassword(TemplateView):
         result = get_nav_categories()
 
         context['categories_men'] = result[0]
-        context['categories_woman'] = result[1]
+        context['categories_women'] = result[1]
 
         return context

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Clothing, Categories, Color, Size, ProductImages, InvoiceTable, BasketTable, UserTable
+from .models import Clothing, Categories, Color, Size, ProductImages, InvoiceTable, BasketTable, UserTable, TempBasket
 
 # Register your models here.
 admin.site.register(Clothing)
@@ -10,3 +10,4 @@ admin.site.register(ProductImages)
 admin.site.register(InvoiceTable)
 admin.site.register(BasketTable)
 admin.site.register(UserTable)
+admin.site.register(TempBasket)

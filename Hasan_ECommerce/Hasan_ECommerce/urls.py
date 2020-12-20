@@ -28,6 +28,7 @@ urlpatterns = [
     path('register/', login_views.Register, name="register"),
     path('forgot_password/', login_views.ForgotPassword.as_view(), name="forgot-pass"),
     path('reset_password/<int:id>/', login_views.ResetPassword.as_view(), name="reset-pass"),
+    path('new-collection/<str:type>/', base_views.NewCollection.as_view(), name="new_collection"),
     path('admin7ddb46/', admin.site.urls),
     path('0baea2/admin/', include('AdminApp.urls')),
 ]
