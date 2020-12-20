@@ -29,16 +29,56 @@
                 <div class="s_product_text">
                     <h3>{{ product_details.product_name }}</h3>
                 </div>
-            <div class="row s_product_inner">
-                <div class="col-lg-5">
+                <div class="row s_product_inner">
+                    <div class="col-lg-5">
+                        <div class="s_product_text">
+                            <h2 style="color: #595959;">Sizes : </h2>
+                            <div class="table-responsive scrollable" style="overflow-y: auto; height:200px;">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Options</td>
+                                            <th scope="col">Size</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <td>
+                                                    <button class="option_btn" type="submit">Add</button>
+                                                </td>
+                                                <td>
+                                                    <input type="hidden" name="t_name" value="f7bd60">
+                                                    <input type="text" name="p_attr" style="width:20%;" required>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                        {% for size in sizes %}
+                                            <tr>
+                                                <td>
+                                                    <a href="f7bd60/{{ size.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                                </td>
+                                                <td>
+                                                    {{ size.name }}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
                     <div class="s_product_text">
-                        <h2 style="color: #595959;">Sizes : </h2>
+                        <h2 class="mt-2" style="color: #595959;">Colors :</h2>
                         <div class="table-responsive scrollable" style="overflow-y: auto; height:200px;">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">Options</td>
-                                        <th scope="col">Size</td>
+                                        <th scope="col">Color</td>
+                                            <th scope="col">Color Code</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,76 +89,101 @@
                                                 <button class="option_btn" type="submit">Add</button>
                                             </td>
                                             <td>
-                                                <input type="hidden" name="t_name" value="f7bd60">
-                                                <input type="text" name="p_attr" style="width:20%;">
+                                                <input type="hidden" name="t_name" value="70dda5">
+                                                <input type="text" name="p_attr" style="width:60%;" required>
+                                            </td>
+                                            <td>
+                                                <input type="text" name="p_attr_code" style="width:60%;">
                                             </td>
                                         </form>
                                     </tr>
-                                    {% for size in sizes %}
+                                    {% for color in colors %}
                                         <tr>
                                             <td>
-                                                <a href="f7bd60/{{ size.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                                <a href="70dda5/{{ color.name }}"><img src="/media/icons/delete.png" alt=""></a>
                                             </td>
                                             <td>
-                                                {{ size.name }}
+                                                {{ color.name }}
+                                            </td>
+                                            <td>
+                                                {{ color.code }}
                                             </td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
+                        <!-- <form action="/home/add_to_cart/c0929b/{{ product_details.id }}/{{ product_details.price }}/{{ product_details.gender }}/{{ product_details.category }}" method="get">
+                            
+                        </form> -->
                     </div>
-                </div>
-                <div class="col-lg-5 offset-lg-1">
-                <div class="s_product_text">
-                    <h2 class="mt-2" style="color: #595959;">Colors :</h2>
-                    <div class="table-responsive scrollable" style="overflow-y: auto; height:200px;">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Options</td>
-                                    <th scope="col">Color</td>
-                                        <th scope="col">Color Code</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <td>
-                                            <button class="option_btn" type="submit">Add</button>
-                                        </td>
-                                        <td>
-                                            <input type="hidden" name="t_name" value="70dda5">
-                                            <input type="text" name="p_attr" style="width:60%;">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="p_attr_code" style="width:60%;">
-                                        </td>
-                                    </form>
-                                </tr>
-                                {% for color in colors %}
-                                    <tr>
-                                        <td>
-                                            <a href="70dda5/{{ color.name }}"><img src="/media/icons/delete.png" alt=""></a>
-                                        </td>
-                                        <td>
-                                            {{ color.name }}
-                                        </td>
-                                        <td>
-                                            {{ color.code }}
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
                     </div>
-                    <!-- <form action="/home/add_to_cart/c0929b/{{ product_details.id }}/{{ product_details.price }}/{{ product_details.gender }}/{{ product_details.category }}" method="get">
-                        
-                    </form> -->
-                </div>
                 </div>
             </div>
+            <div class="container mt-4">
+                <div class="row s_product_inner">
+                    <div class="col-lg-5">
+                        <div class="s_product_text">
+                            <h2 style="color: #595959;">Add Images : </h2>
+                            <div class="container">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="col-md-12 form-group p_start">
+                                        <label for="p_imgs">only (.png) images are supported.</label>
+                                        <input class="form-control" type="file" name="prod_imgs" accept=".png" multiple required>
+                                        <input type="hidden" name="t_name" value="65bd87">
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <button type="submit" class="btn_3">Add Images</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="s_product_text">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h2 style="color: #595959;">Images in Database:</h2>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="/0baea2/admin/delete_imgs/{{ product_details.id }}">
+                                        <button class="option_btn" type="submit">Delete</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% for img in images %}
+                                    <div class="col-md-3 col-sm-3 mt-2">
+                                        <img src="/media/{{ img.name }}" alt="" class="img-fluid">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-4">
+                <div class="row s_product_inner">
+                    <div class="col-lg-5">
+                        <div class="s_product_text">
+                            <h2 style="color: #595959;">Product Description : </h2>
+                            <div class="container">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="col-md-12 form-group p_start">
+                                        <p>* Max characters allowed(200)</p>
+                                        <textarea name="p_desc" cols="40" rows="5" maxlength="200">{{ product_details.product_desc }}</textarea>
+                                        <input type="hidden" name="t_name" value="8ebf37">
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <button type="submit" class="btn_3">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--================End Single Product Area =================-->

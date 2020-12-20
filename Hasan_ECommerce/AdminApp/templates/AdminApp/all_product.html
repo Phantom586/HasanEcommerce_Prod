@@ -40,6 +40,7 @@
                                     <tr>
                                         <th scope="col">Options</th>
                                         <th scope="col">Product</th>
+                                        <th scope="col">Update Name</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Update Price</th>
                                         <th scope="col">Quantity</th>
@@ -63,6 +64,9 @@
                                                         <a href="products/{{ product.id }}">{{ product.product_name }}</a>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td>
+                                                <h5><input type="text" name="p_name" value="{{ product.product_name }}"></h5>
                                             </td>
                                             <td>
                                                 <h5>₹{{ product.price }}</h5>
