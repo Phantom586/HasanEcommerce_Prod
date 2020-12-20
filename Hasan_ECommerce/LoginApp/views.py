@@ -61,6 +61,9 @@ def Login(request):
         if user is not None:
             login(request, user)
             return redirect('hasan-home')
+        else:
+            messages.warning(request, "Entered username or password is incorrect.")
+            return redirect('login')
 
     result = get_nav_categories()
 

@@ -152,6 +152,13 @@
                             <div class="login_part_form_iner">
                                 <h3>Sign in</h3>
                                 <form class="row contact_form" method="post">
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-danger">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
                                     {% csrf_token %}
                                     <div class="col-md-12 form-group p_star">
                                         <input type="text" class="form-control" id="name" name="username" value=""

@@ -578,6 +578,44 @@ ul {
   color: #fff;
 }
 
+/* line 39, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_button.scss */
+.btn_5 {
+  display: inline-block;
+  padding: 9px 42px;
+  border-radius: 50px;
+  background-color: #10558d;
+  border: 1px solid #f4f4f4;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  font-weight: 400;
+  border: 1px solid #10558d;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+/* line 52, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_button.scss */
+.btn_5:hover {
+  background-color: rgb(24, 201, 192);
+  color: #fff;
+}
+
+/* line 39, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_button.scss */
+.option_btn {
+  display: inline-block;
+  padding: 9px 21px;
+  border-radius: 50px;
+  background-color: #10558d;
+  border: 1px solid #f4f4f4;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  font-weight: 400;
+  border: 1px solid #10558d;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 /* line 57, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_button.scss */
 .btn_2 {
   display: inline-block;

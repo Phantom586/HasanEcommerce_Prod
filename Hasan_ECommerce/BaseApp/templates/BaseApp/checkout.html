@@ -22,7 +22,7 @@
     <section class="checkout_area section_padding">
         <div class="container">
         <div class="billing_details">
-            <form class="row contact_form" action="{% url 'base_app:confirm' %}" method="post">
+            <form class="row contact_form" method="post">
                 {% csrf_token %}
                 <div class="col-lg-8">
                     <h3>Billing Details</h3>

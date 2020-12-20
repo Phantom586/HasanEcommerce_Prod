@@ -14,7 +14,7 @@
                     <div class="col-lg-12">
                         <div class="breadcrumb_iner">
                             <div class="breadcrumb_iner_item">
-                                <p>Home/Product  Details</p>
+                                <p>Home/<a href="{% url 'admin_app:ad_all_prods' %}">All Products/</a>Product  Details</p>
                             </div>
                         </div>
                     </div>
@@ -43,15 +43,21 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <a href="add/f7bd60"><img src="/media/icons/add.png" alt=""></a>
-                                        </td>
-                                        <td><input type="text"></td>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <td>
+                                                <button class="option_btn" type="submit">Add</button>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" name="t_name" value="f7bd60">
+                                                <input type="text" name="p_attr" style="width:20%;">
+                                            </td>
+                                        </form>
                                     </tr>
                                     {% for size in sizes %}
                                         <tr>
                                             <td>
-                                                <a href="delete/f7bd60/{{ size.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                                <a href="f7bd60/{{ size.name }}"><img src="/media/icons/delete.png" alt=""></a>
                                             </td>
                                             <td>
                                                 {{ size.name }}
@@ -72,22 +78,35 @@
                                 <tr>
                                     <th scope="col">Options</td>
                                     <th scope="col">Color</td>
+                                        <th scope="col">Color Code</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>
-                                        <a href="add/70dda5"><img src="/media/icons/add.png" alt=""></a>
-                                    </td>
-                                    <td><input type="text"></td>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <td>
+                                            <button class="option_btn" type="submit">Add</button>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" name="t_name" value="70dda5">
+                                            <input type="text" name="p_attr" style="width:60%;">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="p_attr_code" style="width:60%;">
+                                        </td>
+                                    </form>
                                 </tr>
                                 {% for color in colors %}
                                     <tr>
                                         <td>
-                                            <a href="delete/70dda5/{{ color.name }}"><img src="/media/icons/delete.png" alt=""></a>
+                                            <a href="70dda5/{{ color.name }}"><img src="/media/icons/delete.png" alt=""></a>
                                         </td>
                                         <td>
                                             {{ color.name }}
+                                        </td>
+                                        <td>
+                                            {{ color.code }}
                                         </td>
                                     </tr>
                                 {% endfor %}

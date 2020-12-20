@@ -15,8 +15,8 @@
                 <div class="product_slider_img">
                     <div id="vertical">
                         {% for img in images %}
-                            <div data-thumb="/media/product_imgs/{{ img.name }}">
-                                <img src="/media/product_imgs/{{ img.name }}" />
+                            <div data-thumb="/media/{{ img.name }}">
+                                <img src="/media/{{ img.name }}" />
                             </div>
                         {% endfor %}
                     </div>

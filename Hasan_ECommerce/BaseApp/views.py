@@ -275,6 +275,19 @@ class Checkout(TemplateView):
 
     template_name = 'BaseApp/checkout.html'
 
+    def post(self, request, *args, **kwargs):
+
+        if request.method == "POST":
+
+            addr = request.POST["addr"]
+            city = request.POST["city"]
+            pincode = request.POST["zip"]
+            print(addr, city, pincode)
+
+            user = UserTable.objects.filter(id=request.user.id).update(address=addr, city=city, pincode=pincode)
+
+            return render(request, 'BaseApp/confirm.html', {})
+
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
@@ -307,19 +320,6 @@ class Checkout(TemplateView):
 class Confirmation(TemplateView):
 
     template_name = 'BaseApp/confirm.html'
-
-    def post(self, request, *args, **kwargs):
-
-        if request.method == "POST":
-
-            addr = request.POST["addr"]
-            city = request.POST["city"]
-            pincode = request.POST["zip"]
-
-            user = UserTable.objects.filter(id=request.user.id).update(address=addr, city=city, pincode=pincode)
-
-            return render(request, 'BaseApp/confirm.html', {})
-
 
     def get_context_data(self, **kwargs):
 

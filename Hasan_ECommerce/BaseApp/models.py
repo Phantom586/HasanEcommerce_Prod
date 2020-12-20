@@ -1,5 +1,5 @@
 from django.db import models
-
+import os
 
 class Categories(models.Model):
     name = models.CharField(db_column='Name', primary_key=True, max_length=150)  # Field name made lowercase.
@@ -60,9 +60,20 @@ class Size(models.Model):
         return f'{self.id} | {self.name}'
 
 
+def images_dir_path(instance, filename):
+
+    path = 'product_imgs/'
+    ext = filename.split('.')[-1]
+    img_name = instance.temp + '.' + ext
+    print(img_name)
+
+    return os.path.join(path, img_name)
+
+
 class ProductImages(models.Model):
     id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=255)  # Field name made lowercase.
+    name = models.ImageField(db_column='Name', max_length=255, upload_to=images_dir_path)  # Field name made lowercase.
+    temp = models.CharField(db_column='Temp', max_length=30)  # Field name made lowercase.
 
     class Meta:
         managed = False
