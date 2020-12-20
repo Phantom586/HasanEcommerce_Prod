@@ -70,7 +70,7 @@
                                                     <select name="p_gender" id="p_gender">
                                                         <option value="none">Choose</option>
                                                         <option value="men">Male</option>
-                                                        <option value="woman">Female</option>
+                                                        <option value="women">Female</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -124,7 +124,7 @@
                             $("#product_category").html(selectStuff);
                             $("#cat_p > .nice-select > .list").html(restStuff);
 
-                        } else if (val == "woman") {
+                        } else if (val == "women") {
 
                             var restStuff =  "{% for cat in categories_women %}<li data-value='{{ cat.name }}' class='option'>{{ cat.name }}</li>{% endfor %}";
                             var selectStuff = "{% for cat in categories_women %}<option value='{{ cat.name }}'>{{ cat.name }}</option>{% endfor %}";
