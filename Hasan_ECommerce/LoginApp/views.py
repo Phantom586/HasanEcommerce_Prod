@@ -102,10 +102,9 @@ class ForgotPassword(TemplateView):
 
             user_exists = UserTable.objects.filter(phone_no=phone_no, email=email).count()
             print(user_exists)
-            
-            user = UserTable.objects.get(phone_no=phone_no, email=email)
 
             if user_exists > 0:
+                user = UserTable.objects.get(phone_no=phone_no, email=email)
                 return redirect(f'/reset_password/{user.id}')
             else:
                 messages.warning(request, 'You\'ve Entered  Invalid Email or Phone No.')
