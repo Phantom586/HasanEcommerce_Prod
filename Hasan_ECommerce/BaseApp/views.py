@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 import uuid
 from .models import (
     Clothing, Categories, Color, Size, 
@@ -185,10 +186,10 @@ def AddToCart(request, pg, id, mrp, gender, category):
     sess_id = request.session['Sess_ID']
 
     # Checking if the product doesn't already exists in the DB.
-    exists = TempBasket.objects.filter(user_id=user_id, cloth_id=id).count()
+    exists = TempBasket.objects.filter(user_id=user_id, cloth_id=id, size=p_size, color=p_color).count()
 
     if exists > 0:
-        update_prod = TempBasket.objects.filter(user_id=user_id, cloth_id=id).update(quantity=F('quantity')+1, total_mrp=F('mrp')*F('quantity'))
+        update_prod = TempBasket.objects.filter(user_id=user_id, cloth_id=id, size=p_size, color=p_color).update(quantity=F('quantity')+1, total_mrp=F('mrp')*F('quantity'))
     else :
         t_mrp = int(p_qty) * int(mrp)
         store_in_basket = TempBasket.objects.create(
@@ -299,11 +300,29 @@ class Checkout(TemplateView):
             )
 
             order_id = create_order.receipt_no
+            invoice = InvoiceTable.objects.get(receipt_no=order_id)
+            order_time = invoice.timestamp.strftime("%b %d, %Y  %I:%M %p")
+
+            user= UserTable.objects.get(id=request.user.id)
+            user_email = user.email
 
             # moving the products to be purchased to BasketTable.
             products_list = list(TempBasket.objects.filter(user_id=u_id).values())
 
-            for product in products_list:
+            # var to hold the products bought, and details.
+            html_data = f'<h3>This Order has been placed on {order_time}.</h3>\n<h4>Address : {user.address}</h4>\n'
+            html_data += f'<h5>City : {user.city}</h5>\n<h5>Pincode : {user.pincode}</h5>\n'
+
+            for i, product in enumerate(products_list):
+
+                cloth_id = product['cloth_id']
+                cloth = Clothing.objects.get(id=cloth_id)
+
+                html_data += f"""
+                <p>{i+1}. Product Name : {cloth.product_name} | Size : {product['size']} | Color : {product['color']}</p>
+                    <p>Product Price : ₹{product['mrp']} | Quantity : x {product['quantity']} | Total Price : ₹{product['total_mrp']}</p>
+                """
+
                 store_in_basket = BasketTable.objects.create(
                     user_id = product['user_id'],
                     cloth_id = product['cloth_id'],
@@ -315,12 +334,26 @@ class Checkout(TemplateView):
                     total_mrp = product['total_mrp']
                 )
 
+            html_data += f"""<p>Final Price : <strong>₹{total_mrp}</strong></p>"""
+
+            # Sending mail  to the Site owner.
+            response = send_mail(
+                subject = f'Order #{order_id}',
+                message = f'{user.name} has placed an order.',
+                from_email = 'Hasanstorecms@gmail.com',
+                # recipient_list = ['Rabshanh@gmail.com'],
+                recipient_list = ['586pboy@gmail.com'],
+                fail_silently=False,
+                html_message = html_data,
+            )
+
+            print(f'Email Response : {response}')
+
             # Removing all the User's products from the TempBasket.
             remove_prods = TempBasket.objects.filter(user_id=u_id).delete()
 
             # resetting the session_id from session.
             request.session['Sess_ID'] = str(uuid.uuid4().hex)
-            print(request.session['Sess_ID'])
 
             return redirect(f'/home/confirmation/{order_id}')
 
@@ -459,7 +492,8 @@ class Orders(TemplateView):
         
         user = UserTable.objects.get(id=u_id)
 
-        Invoices = list(InvoiceTable.objects.filter(user=u_id).values())
+        # Fetching the Orders by latest Orders first.
+        Invoices = list(InvoiceTable.objects.filter(user=u_id).values().order_by('-timestamp'))
 
         for invoice in Invoices:
             sess_id = invoice['session_id']

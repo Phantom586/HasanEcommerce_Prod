@@ -156,3 +156,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'hasan-home'
 
 LOGIN_URL = 'login'
+
+EMAIL_HOST  = "smtp.gmail.com"
+DEFAULT_FROM_EMAIL = "Hasanstorecms@gmail.com"
+EMAIL_HOST_USER = "Hasanstorecms@gmail.com"
+EMAIL_HOST_PASSWORD = "ecom@123"
+EMAIL_PORT =  587
+# EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
