@@ -26,6 +26,7 @@
                 {% csrf_token %}
                 <div class="col-lg-8">
                     <h3>Billing Details</h3>
+                    <input type="hidden" name="search_txt" value="pseudo_search">
                     <div class="col-md-12 form-group p_star">
                         {% if address %}
                             <input type="text" class="form-control" id="add1" name="addr" value="{{ address }}">

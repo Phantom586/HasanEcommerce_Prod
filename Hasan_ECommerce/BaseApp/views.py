@@ -29,9 +29,20 @@ def get_nav_categories(u_id, logged_in=False):
     return [category_men, category_woman, u_name]
 
 
+
 class IndexView(TemplateView):
     
     template_name = 'BaseApp/index.html'
+
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect('hasan-home')
 
     def get_context_data(self, **kwargs):
 
@@ -53,6 +64,16 @@ class IndexView(TemplateView):
 class ProductsView(TemplateView):
 
     template_name = 'BaseApp/products.html'
+
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect(f'/home/products/{self.kwargs["type"]}')
 
     def get_context_data(self, **kwargs):
 
@@ -88,6 +109,16 @@ class ProductsView(TemplateView):
 class ProductsByCategory(TemplateView):
 
     template_name = 'BaseApp/products.html'
+
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect(f'/home/products/{self.kwargs["type"]}/{self.kwargs["category"]}')
 
     def get_context_data(self, **kwargs):
 
@@ -134,6 +165,16 @@ class ProductsByCategory(TemplateView):
 class ProductDesc(TemplateView):
 
     template_name = 'BaseApp/prod_details.html'
+
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect(f'/home/products/{self.kwargs["type"]}/{self.kwargs["category"]}/{self.kwargs["id"]}')
 
     def get_context_data(self, **kwargs):
 
@@ -216,6 +257,16 @@ def AddToCart(request, pg, id, mrp, gender, category):
 class Cart(TemplateView):
 
     template_name = 'BaseApp/cart.html'
+    
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect('base_app:cart')
 
     def get_context_data(self, **kwargs):
 
@@ -272,6 +323,12 @@ class Checkout(TemplateView):
     def post(self, request, *args, **kwargs):
 
         if request.method == "POST":
+
+            search_str = request.POST["search_txt"]
+
+            if search_str != "pseudo_search":
+
+                return redirect(f'/search_results/{search_str}')
 
             addr = request.POST["addr"]
             city = request.POST["city"]
@@ -406,6 +463,16 @@ class Confirmation(TemplateView):
 
     template_name = 'BaseApp/confirm.html'
 
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect(f'/home/confirmation/{self.kwargs["order_id"]}')
+
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
@@ -448,6 +515,16 @@ class NewCollection(TemplateView):
 
     template_name = 'BaseApp/new_collection.html'
 
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect(f'/new-collection/{self.kwargs["type"]}')
+
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
@@ -479,6 +556,16 @@ class NewCollection(TemplateView):
 class Orders(TemplateView):
 
     template_name = 'BaseApp/orders.html'
+
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST["search_txt"]
+
+        if search_str != "":
+            return redirect(f'/search_results/{search_str}')
+
+        else:
+            return redirect('base_app:orders')
 
     def get_context_data(self, **kwargs):
 
@@ -515,5 +602,39 @@ class Orders(TemplateView):
         context['username'] = result[2]
         context['invoices'] = Invoices
         context['s_user'] = user
+
+        return context
+
+
+class SearchResults(TemplateView):
+
+    template_name  = 'BaseApp/search_results.html'
+
+    def post(self, request, *args, **kwargs):
+
+        search_str = request.POST['search_txt']
+
+        return redirect(f'/search_results/{search_str}')
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        u_id = self.request.user.id
+
+        logged_in = self.request.user.is_authenticated
+
+        result = get_nav_categories(u_id, logged_in)
+
+        search_str = self.kwargs['search_str']
+
+        results = list(Clothing.objects.filter(product_name__icontains=search_str).values())
+        print(results)
+
+        context['categories_men'] = result[0]
+        context['categories_women'] = result[1]
+        context['username'] = result[2]
+        context['products'] = results
+        context['search_str'] = search_str
 
         return context
