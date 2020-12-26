@@ -26,6 +26,7 @@ urlpatterns = [
     path('home/', include('BaseApp.urls')),
     path('logout/', login_views.Logout, name="logout"),
     path('register/', login_views.Register, name="register"),
+    path('search_results/<str:search_str>/', base_views.SearchResults.as_view(), name="register"),
     path('forgot_password/', login_views.ForgotPassword.as_view(), name="forgot-pass"),
     path('reset_password/<int:id>/', login_views.ResetPassword.as_view(), name="reset-pass"),
     path('new-collection/<str:type>/', base_views.NewCollection.as_view(), name="new_collection"),
