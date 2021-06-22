@@ -24,9 +24,9 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 SECRET_KEY = 'u0#&4%(8xz1qkmy+(=6dd3=_8^9kdl03v9bp2ebkhp&ckd%hq+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.noirmode.in']
+ALLOWED_HOSTS = ['*', 'www.noirmode.in']
 
 
 # Application definition
@@ -80,29 +80,29 @@ WSGI_APPLICATION = 'Hasan_ECommerce.wsgi.application'
 
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'hasan_20_21',
-    #     'USER': 'root',
-    #     'PASSWORD': '',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    #     'TIME_ZONE' : 'Asia/Calcutta',
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-    #     },
-    # },
-        'default': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rabshanh$hasan_2021',
-        'USER': 'rabshanh',
-        'PASSWORD': 'DBP@ssHS@123',
-        'HOST': 'rabshanh.mysql.pythonanywhere-services.com',
+        'NAME': 'hasan_20_21',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
         'TIME_ZONE' : 'Asia/Calcutta',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
+        },
+    },
+    #     'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'rabshanh$hasan_2021',
+    #     'USER': 'rabshanh',
+    #     'PASSWORD': 'DBP@ssHS@123',
+    #     'HOST': 'rabshanh.mysql.pythonanywhere-services.com',
+    #     'TIME_ZONE' : 'Asia/Calcutta',
+    #     'OPTIONS': {
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    #     }
+    # }
 }
 
 
