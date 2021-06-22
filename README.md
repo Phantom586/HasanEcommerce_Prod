@@ -7,7 +7,7 @@
   <h3 align="center">Hasan Ecommerce</h3>
   
   <p align="center">
-    An Django based Ecommerce Web Application.
+    A Django based Ecommerce Web Application.
   </p>
 </p>
 
