@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +22,7 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u0#&4%(8xz1qkmy+(=6dd3=_8^9kdl03v9bp2ebkhp&ckd%hq+'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,17 +93,6 @@ DATABASES = {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         },
     },
-    #     'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'rabshanh$hasan_2021',
-    #     'USER': 'rabshanh',
-    #     'PASSWORD': 'DBP@ssHS@123',
-    #     'HOST': 'rabshanh.mysql.pythonanywhere-services.com',
-    #     'TIME_ZONE' : 'Asia/Calcutta',
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-    #     }
-    # }
 }
 
 
